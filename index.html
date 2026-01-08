@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Makan & Minum</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+
+        document.getElementById("moon-icon").style.display = isDark
+          ? "none"
+          : "block";
+        document.getElementById("sun-icon").style.display = isDark
+          ? "block"
+          : "none";
+      }
+
+      document.body.classList.add("dark-mode");
+      document.getElementById("sun-icon").style.display = "block";
+      document.getElementById("moon-icon").style.display = "none";
+    </script>
+  </head>
+  <body class="dark-mode">
+    <button
+      class="dark-mode-toggle"
+      onclick="toggleDarkMode()"
+      aria-label="Toggle dark mode"
+    >
+      <svg
+        id="moon-icon"
+        class="icon icon-small"
+        viewBox="0 0 24 24"
+        style="display: none"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <svg id="sun-icon" class="icon icon-small" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+
+    <a
+      href="https://github.com/e0406370"
+      target="_blank"
+      class="github-link"
+      aria-label="View on GitHub"
+    >
+      <svg class="icon icon-small" viewBox="0 0 24 24">
+        <path
+          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+        ></path>
+      </svg>
+    </a>
+
+    <div id="home" class="page active">
+      <header class="home-header">
+        <h1>Makan & Minum</h1>
+      </header>
+
+      <main class="home-main">
+        <button class="category-btn" onclick="showPage('makan')">
+          <div class="category-icon makan-icon">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+              <path d="M7 2v20"></path>
+              <path
+                d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"
+              ></path>
+            </svg>
+          </div>
+          <h2>Makan</h2>
+        </button>
+
+        <button class="category-btn" onclick="showPage('minum')">
+          <div class="category-icon minum-icon">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+              <line x1="6" x2="6" y1="2" y2="4"></line>
+              <line x1="10" x2="10" y1="2" y2="4"></line>
+              <line x1="14" x2="14" y1="2" y2="4"></line>
+            </svg>
+          </div>
+          <h2>Minum</h2>
+        </button>
+      </main>
+
+      <footer class="home-footer">
+        <iframe
+          src="https://free.timeanddate.com/clock/ia8galcs/n236/tlsg40/fn17/fs24/bat0/tt0/tm1/th2/ts1/tb1"
+          frameborder="0"
+          width="392"
+          height="30"
+        ></iframe>
+      </footer>
+    </div>
+
+    <div id="makan" class="page">
+      <header class="gallery-header makan">
+        <button class="back-btn" onclick="showPage('home')">
+          <svg class="icon icon-small" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <h1>Makan</h1>
+      </header>
+
+      <main class="gallery-main">
+        <div class="gallery-grid" id="makan-grid"></div>
+      </main>
+    </div>
+
+    <div id="minum" class="page">
+      <header class="gallery-header minum">
+        <button class="back-btn" onclick="showPage('home')">
+          <svg class="icon icon-small" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <h1>Minum</h1>
+      </header>
+
+      <main class="gallery-main">
+        <div class="gallery-grid" id="minum-grid"></div>
+      </main>
+    </div>
+
+    <script>
+      const makanItems = [
+        { name: "Mee Goreng", img: "images/makan/mee-goreng.jpg" },
+        { name: "Nasi Ayam", img: "images/makan/nasi-ayam.jpg" },
+        { name: "Nasi Lemak", img: "images/makan/nasi-lemak.jpg" },
+      ];
+
+      const minumItems = [
+        { name: "Kopi O", img: "images/minum/kopi-o.jpg" },
+        { name: "Plain Water", img: "images/minum/plain-water.jpg" },
+        { name: "Teh Tarik", img: "images/minum/teh-tarik.jpg" },
+      ];
+
+      function showPage(pageId) {
+          document.querySelectorAll(".page").forEach((page) => {
+              page.classList.remove("active");
+          });
+          document.getElementById(pageId).classList.add("active");
+          window.scrollTo(0, 0);
+          
+          const githubLink = document.querySelector('.github-link');
+          const darkModeToggle = document.querySelector('.dark-mode-toggle');
+          
+          if (pageId === 'home') {
+              githubLink.style.display = 'flex';
+              darkModeToggle.style.display = 'flex';
+          } else {
+              githubLink.style.display = 'none';
+              darkModeToggle.style.display = 'none';
+          }
+      }
+
+      function renderGallery(items, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = items
+          .map(
+            (item) => `
+                <div class="gallery-item">
+                    <div class="gallery-item-img-container">
+                        <img src="${item.img}" alt="${item.name}" class="gallery-item-img" loading="lazy">
+                    </div>
+                    <div class="gallery-item-name">${item.name}</div>
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      renderGallery(makanItems, "makan-grid");
+      renderGallery(minumItems, "minum-grid");
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then((reg) => console.log("Service Worker registered"))
+            .catch((err) => console.log("Service Worker registration failed"));
+        });
+      }
+    </script>
+  </body>
+</html>
