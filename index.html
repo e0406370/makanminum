@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Makan & Minum</title>
-    <link rel="manifest" href="manifest.json" />
+    <link rel="canonical" href="https://e0406370.github.io/makanminum/" />
+    <link rel="manifest" href="/makanminum/manifest.webmanifest" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon" />
     <script>
       function toggleDarkMode() {
         document.body.classList.toggle("dark-mode");
@@ -50,19 +52,6 @@
         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
       </svg>
     </button>
-
-    <a
-      href="https://github.com/e0406370"
-      target="_blank"
-      class="github-link"
-      aria-label="View on GitHub"
-    >
-      <svg class="icon icon-small" viewBox="0 0 24 24">
-        <path
-          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-        ></path>
-      </svg>
-    </a>
 
     <div id="home" class="page active">
       <header class="home-header">
@@ -153,22 +142,20 @@
       ];
 
       function showPage(pageId) {
-          document.querySelectorAll(".page").forEach((page) => {
-              page.classList.remove("active");
-          });
-          document.getElementById(pageId).classList.add("active");
-          window.scrollTo(0, 0);
-          
-          const githubLink = document.querySelector('.github-link');
-          const darkModeToggle = document.querySelector('.dark-mode-toggle');
-          
-          if (pageId === 'home') {
-              githubLink.style.display = 'flex';
-              darkModeToggle.style.display = 'flex';
-          } else {
-              githubLink.style.display = 'none';
-              darkModeToggle.style.display = 'none';
-          }
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+        document.getElementById(pageId).classList.add("active");
+        window.scrollTo(0, 0);
+
+        const darkModeToggle = document.querySelector(".dark-mode-toggle");
+
+        if (pageId === "home") {
+          darkModeToggle.style.display = "flex";
+        } 
+        else {
+          darkModeToggle.style.display = "none";
+        }
       }
 
       function renderGallery(items, containerId) {
@@ -189,15 +176,15 @@
 
       renderGallery(makanItems, "makan-grid");
       renderGallery(minumItems, "minum-grid");
-
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("service-worker.js")
-            .then((reg) => console.log("Service Worker registered"))
-            .catch((err) => console.log("Service Worker registration failed"));
-        });
-      }
     </script>
+
+  <script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register (
+          '/makanminum/sw.js',
+          {scope: '/makanminum/'}
+        )
+      }
+  </script>
   </body>
 </html>
