@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,6 +56,12 @@
     <div id="home" class="page active">
       <header class="home-header">
         <h1>Makan & Minum</h1>
+        <iframe
+          src="https://free.timeanddate.com/clock/ia8gjd7q/n236/tlsg40/fn17/fs18/fcfff/tc404040/ftb/bas2/bat0/bacfff/pa8/tt0/th2/tb4"
+          frameborder="0"
+          width="255"
+          height="55"
+        ></iframe>
       </header>
 
       <main class="home-main">
@@ -85,15 +91,6 @@
           <h2>Minum</h2>
         </button>
       </main>
-
-      <footer class="home-footer">
-        <iframe
-          src="https://free.timeanddate.com/clock/ia8galcs/n236/tlsg40/fn17/fs24/bat0/tt0/tm1/th2/ts1/tb1"
-          frameborder="0"
-          width="392"
-          height="30"
-        ></iframe>
-      </footer>
     </div>
 
     <div id="makan" class="page">
@@ -178,13 +175,13 @@
       renderGallery(minumItems, "minum-grid");
     </script>
 
-  <script>
+    <script>
       if (navigator.serviceWorker) {
-        navigator.serviceWorker.register (
-          '/makanminum/sw.js',
-          {scope: '/makanminum/'}
-        )
+        navigator.serviceWorker.register(
+          "/makanminum/sw.js", {
+          scope: "/makanminum/",
+        });
       }
-  </script>
+    </script>
   </body>
 </html>
