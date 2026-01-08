@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="googlebot" content="notranslate" />
     <title>Makan & Minum</title>
     <link rel="canonical" href="https://e0406370.github.io/makanminum/" />
     <link rel="manifest" href="/makanminum/manifest.webmanifest" />
@@ -62,6 +63,44 @@
           width="255"
           height="55"
         ></iframe>
+        <div class="medication-reminder">
+          <div class="med-time">
+            <svg class="icon-small" viewBox="0 0 24 24">
+              <path d="M12 2v8"></path>
+              <path d="m4.93 10.93 1.41 1.41"></path>
+              <path d="m2 18h2"></path>
+              <path d="m20 18h2"></path>
+              <path d="m19.07 10.93-1.41 1.41"></path>
+              <path d="M22 22H2"></path>
+              <path d="m8 6 4-4 4 4"></path>
+              <path d="M16 18a4 4 0 0 0-8 0"></path>
+            </svg>
+            <span>Pagi: 9 am</span>
+          </div>
+
+          <div class="med-time">
+            <svg class="icon-small" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <span>Petang: 3 pm</span>
+          </div>
+
+          <div class="med-time">
+            <svg class="icon-small" viewBox="0 0 24 24">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <span>Malam: 9 pm</span>
+          </div>
+        </div>
+
       </header>
 
       <main class="home-main">
@@ -126,17 +165,44 @@
     </div>
 
     <script>
-      const makanItems = [
-        { name: "Mee Goreng", img: "images/makan/mee-goreng.jpg" },
-        { name: "Nasi Ayam", img: "images/makan/nasi-ayam.jpg" },
-        { name: "Nasi Lemak", img: "images/makan/nasi-lemak.jpg" },
-      ];
+      const makanNames = [
+        "bubur-nasi-ayam",
+        "mee-goreng-kuning",
+        "mee-goreng-putih",
+        "mee-rebus",
+        "mee-soto",
+        "nasi-ayam",
+        "nasi-goreng-ikan-bilis",
+        "nasi-goreng-pattaya",
+        "nasi-lemak",
+        "roti-prata"
+      ]
+      const minumNames = [
+        "air-jarang",
+        "ais-limau",
+        "ais-milo",
+        "kopi-o",
+        "susu",
+        "teh-tarik",
+        "teh-o",
+        "100-plus"
+      ]
 
-      const minumItems = [
-        { name: "Kopi O", img: "images/minum/kopi-o.jpg" },
-        { name: "Plain Water", img: "images/minum/plain-water.jpg" },
-        { name: "Teh Tarik", img: "images/minum/teh-tarik.jpg" },
-      ];
+      const makanItems = []
+      for (const name of makanNames) {
+        makanItems.push({
+          name: name.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join(" "),
+          img: `images/makan/${name}.jpg`,
+        })
+      }
+
+      const minumItems = []
+      for (const name of minumNames) {
+        minumItems.push({
+          name: name.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join(" "),
+          img: `images/minum/${name}.jpg`,
+        })
+      }
 
       function showPage(pageId) {
         document.querySelectorAll(".page").forEach((page) => {
@@ -149,7 +215,7 @@
 
         if (pageId === "home") {
           darkModeToggle.style.display = "flex";
-        } 
+        }
         else {
           darkModeToggle.style.display = "none";
         }
@@ -177,8 +243,7 @@
 
     <script>
       if (navigator.serviceWorker) {
-        navigator.serviceWorker.register(
-          "/makanminum/sw.js", {
+        navigator.serviceWorker.register("/makanminum/sw.js", {
           scope: "/makanminum/",
         });
       }

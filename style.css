@@ -221,10 +221,30 @@ body.dark-mode {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.3s;
+  border: 3px solid transparent;
+  cursor: pointer;
 }
 
 .gallery-item:hover {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  border-color: #f97316;
+  transform: translateY(-4px);
+}
+
+#makan .gallery-item:hover {
+  border-color: #f97316;
+}
+
+#minum .gallery-item:hover {
+  border-color: #3b82f6;
+}
+
+.dark-mode .gallery-item:hover {
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.4);
+}
+
+.dark-mode #minum .gallery-item:hover {
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
 }
 
 .gallery-item-img {
@@ -263,4 +283,46 @@ body.dark-mode {
 .icon-small {
   width: 24px;
   height: 24px;
+}
+
+.medication-reminder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.2rem;
+  padding: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.med-time {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 1.15rem;
+  color: black;
+}
+
+.dark-mode .med-time {
+  color: whitesmoke;
+}
+
+.med-time svg {
+  stroke: #f97316;
+  flex-shrink: 0;
+}
+
+.dark-mode .med-time svg {
+  stroke: #fbbf24;
+}
+
+@media (max-width: 640px) {
+  .medication-reminder {
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .med-time {
+    gap: 0.25rem;
+  }
 }
